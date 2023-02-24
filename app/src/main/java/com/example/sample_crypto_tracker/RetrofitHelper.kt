@@ -1,4 +1,0 @@
-package com.example.sample_crypto_tracker
-
-class RetrofitHelper {
-}
