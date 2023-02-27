@@ -29,11 +29,7 @@ class MainActivity : AppCompatActivity() {
                 GlobalScope.launch(Dispatchers.IO) {
                     val response = repository.getCryptoData()
                     if (response != null) {
-                        Log.d("MainActivity", response.toString())
                         if (response != null) {
-                            response.forEach {
-                                Log.d("MainActivity", it.name)
-                            }
                             val currencyList = response.map {
                                 CryptoEntity(
                                     _id = 0,
@@ -56,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                                 currency_list.layoutManager =
                                     LinearLayoutManager(this@MainActivity)
                             }
-                            mainViewModel.insertAll(currencyList)
+
                         }
 
                     }
@@ -73,11 +69,7 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
             val response = repository.getCryptoData()
             if (response != null) {
-                Log.d("MainActivity", response.toString())
                 if (response != null) {
-                    response.forEach {
-                        Log.d("MainActivity", it.name)
-                    }
                     val currencyList = response.map {
                         CryptoEntity(
                             _id = 0,
@@ -100,7 +92,6 @@ class MainActivity : AppCompatActivity() {
                         currency_list.layoutManager =
                             LinearLayoutManager(this@MainActivity)
                     }
-                    mainViewModel.insertAll(currencyList)
                 }
 
             }
