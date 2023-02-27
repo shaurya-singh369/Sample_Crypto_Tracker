@@ -23,7 +23,7 @@ class CryptoRepository(
            return emptyList()
        }
         else
-              return getAll().value!!
+              return getAll()!!
     }
     suspend fun insertAll(cryptoData: List<CryptoEntity>) {
         cryptoDao.insertAll(cryptoData)
@@ -31,7 +31,7 @@ class CryptoRepository(
     suspend fun updateAll(cryptoData: CryptoEntity) {
         cryptoDao.updateAll(cryptoData)
     }
-    fun getAll(): LiveData<List<CryptoEntity>> {
+    fun getAll(): List<CryptoEntity> {
         return cryptoDao.getAll()
     }
 }

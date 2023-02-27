@@ -10,6 +10,6 @@ interface CryptoDao {
     @Update
     suspend fun updateAll(cryptoData: CryptoEntity)
     @Query("SELECT * FROM crypto_table")
-    fun getAll(): LiveData<List<CryptoEntity>>
+    fun getAll(): List<CryptoEntity>
 
 }
