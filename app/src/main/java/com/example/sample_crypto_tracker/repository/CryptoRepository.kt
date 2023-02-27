@@ -2,9 +2,9 @@ package com.example.sample_crypto_tracker.repository
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import com.example.sample_crypto_tracker.Api.CryptoDataApi
-import com.example.sample_crypto_tracker.CryptoData.CryptoDao
-import com.example.sample_crypto_tracker.CryptoData.CryptoEntity
+import com.example.sample_crypto_tracker.api.CryptoDataApi
+import com.example.sample_crypto_tracker.schema.CryptoDao
+import com.example.sample_crypto_tracker.schema.CryptoEntity
 import com.example.sample_crypto_tracker.NetworkUtils
 
 class CryptoRepository(

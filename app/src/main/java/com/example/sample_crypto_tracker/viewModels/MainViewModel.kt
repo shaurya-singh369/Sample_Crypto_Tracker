@@ -3,7 +3,7 @@ package com.example.sample_crypto_tracker.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.sample_crypto_tracker.CryptoData.CryptoEntity
+import com.example.sample_crypto_tracker.schema.CryptoEntity
 import com.example.sample_crypto_tracker.repository.CryptoRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

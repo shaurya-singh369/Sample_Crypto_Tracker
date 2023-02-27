@@ -1,9 +1,9 @@
 package com.example.sample_crypto_tracker
 
 import android.app.Application
-import com.example.sample_crypto_tracker.Api.CryptoDataApi
-import com.example.sample_crypto_tracker.Api.RetrofitHelper
-import com.example.sample_crypto_tracker.CryptoData.CryptoDatabase
+import com.example.sample_crypto_tracker.api.CryptoDataApi
+import com.example.sample_crypto_tracker.api.RetrofitHelper
+import com.example.sample_crypto_tracker.schema.CryptoDatabase
 import com.example.sample_crypto_tracker.repository.CryptoRepository
 
 class CryptoApplication: Application() {

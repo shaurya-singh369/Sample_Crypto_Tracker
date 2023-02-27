@@ -1,4 +1,4 @@
-package com.example.sample_crypto_tracker.CryptoData
+package com.example.sample_crypto_tracker.schema
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

@@ -1,4 +1,4 @@
-package com.example.sample_crypto_tracker.CryptoData
+package com.example.sample_crypto_tracker.schema
 
 import android.content.Context
 import androidx.room.Database

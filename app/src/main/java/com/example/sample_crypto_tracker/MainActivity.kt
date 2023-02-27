@@ -1,11 +1,12 @@
 package com.example.sample_crypto_tracker
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.sample_crypto_tracker.CryptoData.*
+import com.example.sample_crypto_tracker.schema.*
 import com.example.sample_crypto_tracker.viewModels.MainViewModel
 import com.example.sample_crypto_tracker.viewModels.MainViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var database: CryptoDatabase
     lateinit var mainViewModel: MainViewModel
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

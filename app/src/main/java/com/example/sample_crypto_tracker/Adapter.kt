@@ -1,12 +1,11 @@
 package com.example.sample_crypto_tracker
 
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sample_crypto_tracker.CryptoData.CryptoEntity
+import com.example.sample_crypto_tracker.schema.CryptoEntity
 
 class Adapter(val cryptoList:List<CryptoEntity>): RecyclerView.Adapter<Adapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

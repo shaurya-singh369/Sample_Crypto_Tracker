@@ -1,4 +1,4 @@
-package com.example.sample_crypto_tracker.Api
+package com.example.sample_crypto_tracker.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
