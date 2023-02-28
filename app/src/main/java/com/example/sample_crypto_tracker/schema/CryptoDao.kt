@@ -8,8 +8,8 @@ interface CryptoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(cryptoData: List<CryptoEntity>)
     @Update
-    suspend fun updateAll(cryptoData: CryptoEntity)
+    suspend fun updateAll(cryptoData: List<CryptoEntity>)
     @Query("SELECT * FROM crypto_table")
-    fun getAll(): List<CryptoEntity>
+    fun getAll(): LiveData<List<CryptoEntity>>
 
 }

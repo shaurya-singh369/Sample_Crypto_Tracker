@@ -10,16 +10,12 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val cryptoRepository: CryptoRepository) : ViewModel() {
 
-
-    fun getAll(): List<CryptoEntity> {
-        return cryptoRepository.getAll()
-    }
-
-    fun insertAll(cryptoData: List<CryptoEntity>) {
+    init {
         viewModelScope.launch(Dispatchers.IO) {
-            cryptoRepository.insertAll(cryptoData)
+            cryptoRepository.getCryptoData()
         }
-
     }
+    val cryptoData: LiveData<List<CryptoEntity>>
+        get() = cryptoRepository.cryptoData
 
 }

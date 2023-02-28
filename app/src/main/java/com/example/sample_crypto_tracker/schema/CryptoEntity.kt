@@ -5,10 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "crypto_table")
 data class CryptoEntity(
-    @PrimaryKey(autoGenerate = true)
-    val _id:Long,
-    val changePercent24Hr: String,
+    @PrimaryKey
     val id: String,
+    val changePercent24Hr: String,
     val marketCapUsd: String,
     val maxSupply: String?,
     val name: String,
