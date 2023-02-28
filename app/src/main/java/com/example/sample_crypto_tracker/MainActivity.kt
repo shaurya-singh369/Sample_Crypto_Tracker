@@ -3,13 +3,14 @@ package com.example.sample_crypto_tracker
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sample_crypto_tracker.recylerview.Adapter
 import com.example.sample_crypto_tracker.schema.*
 import com.example.sample_crypto_tracker.viewModels.MainViewModel
 import com.example.sample_crypto_tracker.viewModels.MainViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -20,9 +21,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val repository=(application as CryptoApplication).cryptoRepository
-
-        mainViewModel=ViewModelProvider(this, MainViewModelFactory(repository)).get(MainViewModel::class.java)
+        val repository = (application as CryptoApplication).cryptoRepository
+        val fab: View = findViewById(R.id.fab)
+        mainViewModel =
+            ViewModelProvider(this, MainViewModelFactory(repository)).get(MainViewModel::class.java)
+        fab.setOnClickListener { view ->
+            mainViewModel.refreshData()
+        }
         mainViewModel.cryptoData.observe(this@MainActivity) {
             val adapter = Adapter(it)
             currency_list.adapter = adapter
@@ -30,15 +35,18 @@ class MainActivity : AppCompatActivity() {
                 LinearLayoutManager(this@MainActivity)
         }
 
-        }
-//    onresume
+
+    }
+
+    //    onresume
     override fun onResume() {
         super.onResume()
-        val repository=(application as CryptoApplication).cryptoRepository
+        val repository = (application as CryptoApplication).cryptoRepository
         GlobalScope.launch {
             repository.getCryptoData()
         }
-        mainViewModel=ViewModelProvider(this, MainViewModelFactory(repository)).get(MainViewModel::class.java)
+        mainViewModel =
+            ViewModelProvider(this, MainViewModelFactory(repository)).get(MainViewModel::class.java)
         mainViewModel.cryptoData.observe(this@MainActivity) {
             val adapter = Adapter(it)
             currency_list.adapter = adapter
@@ -48,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    }
+}
 
 
 

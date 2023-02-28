@@ -1,5 +1,7 @@
 package com.example.sample_crypto_tracker
 
+import android.util.Log
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.sample_crypto_tracker.schema.CryptoDao
@@ -10,8 +12,8 @@ import kotlinx.coroutines.runBlocking
 import org.junit.*
 
 class CryptoDaoTest {
-//    @get:Rule
-//    val instantExecutorRule =
+    @get:Rule
+    val instantExecutorRule =InstantTaskExecutorRule()
 
     lateinit var cryptoDao: CryptoDao
     lateinit var cryptoDatabase: CryptoDatabase
@@ -38,14 +40,13 @@ class CryptoDaoTest {
         priceUsd = "6929.8217756835584756",
         changePercent24Hr = "-0.8101417214350335",
         vwap24Hr = "7175.0663247679233209"
-
-        // reformat
-
         )
         cryptoDao.insertAll(listOf(cryptoEntity))
-        val cryptoList = cryptoDao.getAll().value
+        val cryptoList = cryptoDao.getAll().getOrAwaitValue()
+        Log.d("CryptoDaoTest", "cryptoList: $cryptoList")
         if (cryptoList != null) {
             Assert.assertEquals(1, cryptoList.size)
+            Assert.assertEquals("bitcoin", cryptoList[0].id)
         }
 
     }

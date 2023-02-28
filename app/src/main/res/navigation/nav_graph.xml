@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.sample_crypto_tracker.Home"
+        android:label="fragment_home2"
+        tools:layout="@layout/fragment_home2" >
+        <action
+            android:id="@+id/action_home2_to_crypto_detail"
+            app:destination="@id/crypto_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/crypto_detail"
+        android:name="com.example.sample_crypto_tracker.Crypto_detail"
+        android:label="fragment_crypto_detail"
+        tools:layout="@layout/fragment_crypto_detail" >
+        <action
+            android:id="@+id/action_crypto_detail_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
+</navigation>

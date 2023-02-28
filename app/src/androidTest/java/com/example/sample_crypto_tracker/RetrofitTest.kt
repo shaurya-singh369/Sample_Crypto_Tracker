@@ -22,6 +22,7 @@ class RetrofitTest {
     fun getCrypto_expectedHundredCrypto() = runBlocking{
         cryptoApi.getAssets().body()?.data.let { cryptoList ->
             if (cryptoList != null) {
+
                 Assert.assertEquals(100, cryptoList.size)
             }
         }

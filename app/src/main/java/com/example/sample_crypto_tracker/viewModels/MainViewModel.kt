@@ -18,4 +18,10 @@ class MainViewModel(private val cryptoRepository: CryptoRepository) : ViewModel(
     val cryptoData: LiveData<List<CryptoEntity>>
         get() = cryptoRepository.cryptoData
 
+    fun refreshData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            cryptoRepository.getCryptoData()
+        }
+    }
+
 }
