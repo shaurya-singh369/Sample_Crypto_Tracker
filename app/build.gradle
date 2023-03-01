@@ -66,10 +66,18 @@ dependencies {
 
     //test
     testImplementation 'junit:junit:4.13.2'
+    //mockito
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
+    testImplementation'org.mockito:mockito-core:4.2.0'
+
+
+
     //instant task executor
     androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
     //navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+
+
 
 
 }

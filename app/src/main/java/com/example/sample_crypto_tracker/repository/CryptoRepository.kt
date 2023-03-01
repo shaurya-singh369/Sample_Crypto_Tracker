@@ -47,7 +47,7 @@ class CryptoRepository(
             Log.d("insertAll", "Error: ${e.message}")
         }
     }
-    private fun getAll(): List<CryptoEntity> {
+     fun getAll(): List<CryptoEntity> {
         return try {
             cryptoDao.getAll()
         } catch (e: Exception) {
