@@ -56,5 +56,17 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="29dp"
+            android:layout_below="@id/currency_rate"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="3dp"
+            android:padding="3dp"
+            android:src="@drawable/us_dollar_coin_color_icon" />
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

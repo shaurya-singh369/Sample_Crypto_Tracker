@@ -28,7 +28,10 @@ class RetrofitTest {
         }
 
     }
-
+//check reponse codes
+// wrong test cases
+    //mock data create
+        //verify the getcrypto method is called ,catch block
 
     @After
     fun tearDown() {

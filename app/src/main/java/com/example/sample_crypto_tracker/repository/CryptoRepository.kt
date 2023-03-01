@@ -1,6 +1,7 @@
 package com.example.sample_crypto_tracker.repository
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sample_crypto_tracker.api.CryptoDataApi
@@ -17,29 +18,42 @@ class CryptoRepository(
     val cryptoData: LiveData<List<CryptoEntity>>
         get() = cryptoLiveData
 
-
     suspend fun getCryptoData(): List<CryptoEntity> {
-        if (NetworkUtils.isInternetAvailable(applicationContext)) {
-            val response = cryptoService.getAssets()
-            if (response?.body() != null) {
-                insertAll(response.body()!!.data)
-                cryptoLiveData.postValue(response.body()!!.data)
-                return response.body()!!.data
+        try {
+            if (NetworkUtils.isInternetAvailable(applicationContext)) {
+                val response = cryptoService.getAssets()
+                if (response.body() != null) {
+                   response.body()?.let {
+                       insertAll(it.data)
+                       cryptoLiveData.postValue(it.data)
+
+                   }
+                    return response.body()!!.data
+                }
+                return emptyList()
+            } else {
+                return getAll()
             }
-            return emptyList()
-        } else
-            return getAll().value!!
+        } catch (e: Exception) {
+            Log.d("getCryptoData", "Error: ${e.message}")
+            return getAll()
+        }
     }
 
-    suspend fun insertAll(cryptoData: List<CryptoEntity>) {
-        cryptoDao.insertAll(cryptoData)
+    private suspend fun insertAll(cryptoData: List<CryptoEntity>) {
+        try {
+            cryptoDao.insertAll(cryptoData)
+        } catch (e: Exception) {
+            Log.d("insertAll", "Error: ${e.message}")
+        }
     }
+    private fun getAll(): List<CryptoEntity> {
+        return try {
+            cryptoDao.getAll()
+        } catch (e: Exception) {
+            Log.d("getAll", "Error: ${e.message}")
+            emptyList()
+        }
 
-    suspend fun updateAll(cryptoData: List<CryptoEntity>) {
-        cryptoDao.updateAll(cryptoData)
-    }
-
-    fun getAll(): LiveData<List<CryptoEntity>> {
-        return cryptoDao.getAll()
     }
 }

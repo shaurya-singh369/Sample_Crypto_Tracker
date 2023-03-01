@@ -1,19 +1,18 @@
 package com.example.sample_crypto_tracker
 
 import android.util.Log
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.sample_crypto_tracker.schema.CryptoDao
 
-import com.example.sample_crypto_tracker.schema.CryptoDatabase
+import com.example.sample_crypto_tracker.schema.database.CryptoDatabase
 import com.example.sample_crypto_tracker.schema.CryptoEntity
 import kotlinx.coroutines.runBlocking
 import org.junit.*
 
 class CryptoDaoTest {
-    @get:Rule
-    val instantExecutorRule =InstantTaskExecutorRule()
+//    @get:Rule
+//    val instantExecutorRule =InstantTaskExecutorRule()
 
     lateinit var cryptoDao: CryptoDao
     lateinit var cryptoDatabase: CryptoDatabase
@@ -42,12 +41,12 @@ class CryptoDaoTest {
         vwap24Hr = "7175.0663247679233209"
         )
         cryptoDao.insertAll(listOf(cryptoEntity))
-        val cryptoList = cryptoDao.getAll().getOrAwaitValue()
+        val cryptoList = cryptoDao.getAll()
         Log.d("CryptoDaoTest", "cryptoList: $cryptoList")
-        if (cryptoList != null) {
+
             Assert.assertEquals(1, cryptoList.size)
             Assert.assertEquals("bitcoin", cryptoList[0].id)
-        }
+
 
     }
 

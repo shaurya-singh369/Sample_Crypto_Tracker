@@ -2,6 +2,7 @@ package com.example.sample_crypto_tracker.schema
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.sql.Timestamp
 
 @Entity(tableName = "crypto_table")
 data class CryptoEntity(
@@ -17,4 +18,5 @@ data class CryptoEntity(
     val symbol: String,
     val volumeUsd24Hr: String,
     val vwap24Hr: String?
+
 )
