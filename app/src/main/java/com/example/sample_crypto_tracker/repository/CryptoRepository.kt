@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.sample_crypto_tracker.api.CryptoDataApi
 import com.example.sample_crypto_tracker.schema.CryptoDao
 import com.example.sample_crypto_tracker.schema.CryptoEntity
-import com.example.sample_crypto_tracker.NetworkUtils
+import com.example.sample_crypto_tracker.utils.NetworkUtils
 
 class CryptoRepository(
     private val cryptoService: CryptoDataApi,

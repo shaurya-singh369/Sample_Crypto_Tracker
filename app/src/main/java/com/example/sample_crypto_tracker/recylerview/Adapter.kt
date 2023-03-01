@@ -24,11 +24,6 @@ class Adapter(private val cryptoList: List<CryptoEntity>) : RecyclerView.Adapter
             currencySymbol.text = cryptoList[position].symbol
         }
 
-        holder.root.setOnClickListener {
-            //TODO: Navigate to detail page
-
-        }
-
     }
 
 
@@ -37,11 +32,10 @@ class Adapter(private val cryptoList: List<CryptoEntity>) : RecyclerView.Adapter
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //view binding is better
-        var currencyName = itemView.findViewById<TextView>(R.id.currency_name)
-        var currencyRate = itemView.findViewById<TextView>(R.id.currency_rate)
-        var currencySymbol = itemView.findViewById<TextView>(R.id.currency_symbol)
-        var root = itemView.findViewById<View>(R.id.currency_name)
+        var currencyName: TextView = itemView.findViewById<TextView>(R.id.currency_name)
+        var currencyRate: TextView = itemView.findViewById<TextView>(R.id.currency_rate)
+        var currencySymbol: TextView = itemView.findViewById<TextView>(R.id.currency_symbol)
+
     }
 
 

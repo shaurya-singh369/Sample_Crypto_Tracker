@@ -1,15 +1,10 @@
-package com.example.sample_crypto_tracker
+package com.example.sample_crypto_tracker.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
 
-class NetworkUtils {//make this object singleton
-
-
-    companion object {
-
+object NetworkUtils {
         fun isInternetAvailable(context: Context): Boolean {
             (context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).run {
                 return this.getNetworkCapabilities(this.activeNetwork)?.hasCapability(
@@ -17,5 +12,5 @@ class NetworkUtils {//make this object singleton
                 ) ?: false
             }
         }
-    }
+
 }
