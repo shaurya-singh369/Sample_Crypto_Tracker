@@ -54,7 +54,8 @@
             android:layout_marginLeft="2dp"
             android:padding="3dp"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            style="@style/usdcoin"/>
 
         <ImageView
             android:layout_width="23dp"

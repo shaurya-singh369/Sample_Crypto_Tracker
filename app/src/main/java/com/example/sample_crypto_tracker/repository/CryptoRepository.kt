@@ -8,6 +8,7 @@ import com.example.sample_crypto_tracker.api.CryptoDataApi
 import com.example.sample_crypto_tracker.schema.CryptoDao
 import com.example.sample_crypto_tracker.schema.CryptoEntity
 import com.example.sample_crypto_tracker.utils.NetworkUtils
+import kotlinx.coroutines.awaitAll
 
 class CryptoRepository(
     private val cryptoService: CryptoDataApi,
@@ -32,7 +33,10 @@ class CryptoRepository(
                 }
                 return emptyList()
             } else {
-                return getAll()
+                val data=getAll()
+                cryptoLiveData.postValue(data)
+                return data
+
             }
         } catch (e: Exception) {
             Log.d("getCryptoData", "Error: ${e.message}")
@@ -47,7 +51,7 @@ class CryptoRepository(
             Log.d("insertAll", "Error: ${e.message}")
         }
     }
-     fun getAll(): List<CryptoEntity> {
+   fun getAll(): List<CryptoEntity> {
         return try {
             cryptoDao.getAll()
         } catch (e: Exception) {

@@ -10,6 +10,7 @@ import com.nhaarman.mockitokotlin2.mock
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert
+import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -47,8 +48,7 @@ import retrofit2.Response
 class CryptoRepositoryTest {
     @Mock
     private lateinit var cryptoRepository: CryptoRepository
-    @Mock
-    private lateinit var cryptoService: CryptoDataApi
+
     @Mock
     private lateinit var cryptoDao: CryptoDao
 
@@ -99,14 +99,29 @@ class CryptoRepositoryTest {
         val cryptoData = cryptoRepository.getCryptoData()
         Assert.assertTrue(cryptoData.isEmpty())
     }
+
+//    @Test
+//    fun `test getCryptoData when internet is available but fetching data throws an exception`(): RuntimeException =
+//        runBlocking {
+//            Mockito.`when`(cryptoRepository.getCryptoData()).thenThrow(RuntimeException())
+//
+//            assertThrows(RuntimeException::class.java) {
+//                runBlocking { cryptoRepository.getCryptoData() }
+//
+//
+//            }
+//
+//
+//        }
+
     @Test
     fun `test getCryptoData when internet is available but fetching data throws an exception`() = runBlocking {
         Mockito.`when`(cryptoRepository.getCryptoData()).thenThrow(RuntimeException())
         try {
-            cryptoRepository.getCryptoData()
-            Assert.fail("Expected exception not thrown")
-        } catch (ex: Exception) {
-            // Expected behavior
+             cryptoRepository.getCryptoData()
+            Assert.fail("Exception not thrown")
+        } catch (e: Exception) {
+            // Expected behaviour
         }
     }
     @Test
@@ -114,6 +129,7 @@ class CryptoRepositoryTest {
         Mockito.`when`(cryptoDao.getAll()).thenReturn(mockCryptoList())
         Assert.assertEquals(cryptoEntity, cryptoDao.getAll()[0])
     }
+
     private fun mockCryptoList(): List<CryptoEntity> {
         return listOf(cryptoEntity, cryptoEntity2)
     }
